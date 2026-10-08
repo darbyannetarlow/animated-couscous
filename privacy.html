@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy · Antirot</title>
+<meta name="description" content="How Antirot handles your data. Your sessions, notes, and saves stay on your iPhone, with no account and no server storing your content.">
+<meta name="theme-color" content="#f5f8ee">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap">
+
+<style>
+/* ---------- Tokens (same as index.html) ---------- */
+:root{
+  --ink:#2b3327;
+  --ink-soft:#3f4638;
+  --muted:#6f7563;
+  --terra:#b6543f;
+  --terra-dark:#8f3f2e;
+  --cream:#f7f3e7;
+  --paper:#fbf8ee;
+  --hair:rgba(120,110,80,.4);
+  --stamp:rgba(182,84,63,.55);
+  --card-shadow:0 10px 22px rgba(60,55,35,.18);
+  --serif:'IM Fell English', Georgia, 'Times New Roman', serif;
+  --sans:'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --gutter:clamp(24px, 6vw, 80px);
+  --max:1280px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:radial-gradient(circle at 50% 0%, #f5f8ee 0%, #e2ebd2 40%, #c7d6b3 100%);
+  background-color:#d9e3c9;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+a{color:var(--terra)}
+a:hover{color:var(--terra-dark)}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:4px}
+p{margin:0}
+h1{margin:0;font-weight:400;font-family:var(--serif);color:var(--ink)}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+
+/* ---------- Nav (same as index.html) ---------- */
+.nav{display:flex;align-items:center;justify-content:space-between;height:88px}
+.brand{font-family:var(--serif);font-size:30px;color:var(--ink);text-decoration:none}
+.brand:hover{color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a:not(.btn){font-size:15px;font-weight:500;color:var(--ink);text-decoration:none}
+.nav-links a:not(.btn):hover,.nav-links a[aria-current]{color:var(--terra)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:6px;font:500 15px/1 var(--sans);text-decoration:none;background:var(--terra);color:var(--paper);transition:background-color .15s ease}
+.btn:hover{background:var(--terra-dark);color:var(--paper)}
+
+/* ---------- Policy sheet ---------- */
+.policy{padding-block:24px 96px}
+.sheet{
+  max-width:720px;margin:0 auto;
+  background:var(--cream);
+  border:1px solid rgba(120,110,80,.14);
+  border-radius:4px;
+  box-shadow:var(--card-shadow);
+  padding:clamp(28px, 6vw, 64px);
+}
+.sheet h1{font-size:clamp(2.125rem, 1.6rem + 2vw, 2.875rem);line-height:1.1}
+.stamp{
+  display:inline-block;margin-top:18px;
+  font-size:11px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--terra);padding:3px 9px;border:1.5px solid var(--stamp);border-radius:3px;
+  transform:rotate(-1.5deg);
+}
+.sheet .lede{margin-top:28px;font-size:clamp(1.0625rem, 1rem + .25vw, 1.1875rem);line-height:1.6;color:var(--ink)}
+.sheet hr{border:0;border-top:1px dashed var(--hair);margin:32px 0}
+.sheet .body p{font-size:16.5px;line-height:1.7;color:var(--ink-soft);max-width:62ch}
+.sheet .body p + p{margin-top:1.15em}
+.sheet .body strong{font-weight:600;color:var(--ink)}
+.sheet .body .contact{max-width:none;margin-top:32px;padding-top:24px;border-top:1px dashed var(--hair)}
+
+/* ---------- Footer (same as index.html) ---------- */
+.footer{border-top:1px dashed var(--hair)}
+.footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:100px}
+.footer .brand{font-size:20px}
+.footer nav{display:flex;gap:8px}
+.footer nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;font-size:14px;color:var(--ink-soft);text-decoration:none}
+.footer nav a:hover,.footer nav a[aria-current]{color:var(--terra)}
+.footer small{font-size:13px;color:var(--muted)}
+
+@media (max-width: 639px){
+  .nav{height:68px}
+  .brand{font-size:26px}
+  .nav-links a:not(.btn){display:none}
+  .policy{padding-block:8px 64px}
+  .sheet .body p{font-size:16px}
+  .footer .wrap{flex-direction:column;justify-content:center;gap:8px;padding-block:22px 28px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="./" aria-label="Antirot home">Antirot</a>
+  <nav class="nav-links" aria-label="Main">
+    <a href="./#how">How it works</a>
+    <a href="./#archive">The archive</a>
+    <a href="./privacy.html" aria-current="page">Privacy</a>
+    <a class="btn" href="./#join">Join the beta</a>
+  </nav>
+</header>
+
+<main class="wrap policy">
+  <article class="sheet" aria-labelledby="policy-title">
+    <h1 id="policy-title">Antirot Privacy Policy</h1>
+    <p class="stamp">Effective September 25, 2026</p>
+
+    <p class="lede">Antirot helps you manage time in selected apps and save things you want to revisit. Your sessions, intentions, notes, saved links, and saved media are stored on your device. Antirot does not require an account, and we do not operate a server that stores this content.</p>
+
+    <hr>
+
+    <div class="body">
+      <p><strong>Screen Time access.</strong> If you grant permission, Antirot uses Apple&rsquo;s Screen Time features to apply app limits and support your sessions. This activity is processed on your device; we do not receive a record of your app usage.</p>
+
+      <p><strong>Links and purchases.</strong> When you open a saved link, your device connects to the destination site, which has its own privacy practices. Purchases are handled by Apple. We do not receive your payment card details.</p>
+
+      <p><strong>Support.</strong> If you contact us, we receive the information you choose to send, such as your email address and message. We use it to respond to your request and retain it only as needed for support.</p>
+
+      <p><strong>Storage and deletion.</strong> You can delete content you have saved in Antirot. Deleting the app removes its local data from your device. Copies you exported and device backups managed through Apple may remain separately under your control.</p>
+
+      <p>We do not sell your personal information or use your Antirot content for advertising. If our practices change, we will update this policy and its effective date.</p>
+
+      <p class="contact">For privacy questions or support, contact <a href="mailto:Antirotapp@gmail.com">Antirotapp@gmail.com</a>.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <a class="brand" href="./">Antirot</a>
+    <nav aria-label="Footer">
+      <a href="./privacy.html" aria-current="page">Privacy</a>
+      <a href="mailto:Antirotapp@gmail.com">Support</a>
+      <a href="#">Press kit</a>
+    </nav>
+    <small>Made by one person. 2026.</small>
+  </div>
+</footer>
+
+</body>
+</html>
