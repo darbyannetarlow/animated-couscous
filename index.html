@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Antirot · Use social media with intention, and save what's worth keeping</title>
+<meta name="description" content="Set an intention before you scroll. Everything you save from Instagram, TikTok, YouTube, Pinterest, and Facebook lands in one archive with your notes.">
+<meta name="theme-color" content="#f5f8ee">
+
+<!-- Social previews. Replace the URL and add og-image.png (1200×630) next to this file. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Antirot">
+<meta property="og:description" content="Use social media with intention, and save what's worth keeping.">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap">
+
+<style>
+/* ---------- Tokens (match AntirotTheme.swift) ---------- */
+:root{
+  --ink:#2b3327;
+  --ink-soft:#3f4638;
+  --muted:#6f7563;
+  --terra:#b6543f;
+  --terra-dark:#8f3f2e;
+  --cream:#f7f3e7;
+  --paper:#fbf8ee;
+  --gold:#8a8163;
+  --hair:rgba(120,110,80,.4);
+  --stamp:rgba(182,84,63,.55);
+  --card-shadow:0 10px 22px rgba(60,55,35,.18);
+  --serif:'IM Fell English', Georgia, 'Times New Roman', serif;
+  --sans:'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --gutter:clamp(24px, 6vw, 80px);
+  --max:1280px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth} }
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:radial-gradient(circle at 50% 0%, #f5f8ee 0%, #e2ebd2 40%, #c7d6b3 100%);
+  background-color:#d9e3c9;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+img,svg{display:block;max-width:100%}
+a{color:var(--terra)}
+a:hover{color:var(--terra-dark)}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:4px}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:400;font-family:var(--serif);color:var(--ink)}
+
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* ---------- Type ---------- */
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted)}
+.h1{font-size:clamp(2.375rem, 1.55rem + 3.4vw, 3.875rem);line-height:1.09}
+.h1 em{font-style:italic}
+.h2{font-size:clamp(2rem, 1.55rem + 1.6vw, 2.75rem);line-height:1.15}
+.h3{font-size:clamp(1.375rem, 1.2rem + .5vw, 1.625rem);line-height:1.2}
+.lede{font-size:clamp(1.0625rem, 1rem + .25vw, 1.1875rem);line-height:1.55;color:var(--ink-soft)}
+.body{font-size:16px;line-height:1.55;color:var(--ink-soft)}
+.small{font-size:15px;line-height:1.55;color:var(--ink-soft)}
+
+/* ---------- Buttons & stamps ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:6px;font:500 17px/1 var(--sans);text-decoration:none;background:var(--terra);color:var(--paper);transition:background-color .15s ease}
+.btn:hover{background:var(--terra-dark);color:var(--paper)}
+.btn-ghost{background:rgba(255,255,255,.4);color:var(--ink);border:1.5px dashed rgba(43,51,39,.45);padding:0 22px}
+.btn-ghost:hover{background:rgba(255,255,255,.7);color:var(--ink)}
+.btn-sm{min-height:44px;padding:0 20px;font-size:15px}
+
+.stamp{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--terra);padding:3px 9px;border:1.5px solid var(--stamp);border-radius:3px}
+.stamp-sm{font-size:10px;padding:2px 8px}
+.tilt-a{transform:rotate(-1.5deg)} .tilt-b{transform:rotate(1deg)} .tilt-c{transform:rotate(-.8deg)} .tilt-d{transform:rotate(1.4deg)} .tilt-e{transform:rotate(-1.2deg)}
+
+/* ---------- Scrapbook pieces ---------- */
+.card{background:var(--cream);border:1px solid rgba(120,110,80,.14);box-shadow:var(--card-shadow)}
+.polaroid{background:#fff;padding:5px 5px 20px;box-shadow:0 4px 10px rgba(0,0,0,.25);flex-shrink:0}
+.polaroid > div{width:66px;height:66px;display:flex;align-items:center;justify-content:center}
+.polaroid.sm{padding-bottom:18px}
+.polaroid.sm > div{width:54px;height:54px}
+
+/* ---------- Phone + island mocks ---------- */
+.phone{position:relative;width:320px;height:580px;background:#fff;border-radius:44px;border:10px solid var(--ink);box-shadow:0 30px 60px rgba(43,51,39,.28);overflow:hidden}
+.feed{display:flex;flex-direction:column;gap:14px;padding:176px 22px 0}
+.feed .block{height:150px;background:rgba(43,51,39,.07);border-radius:10px}
+.feed .block.alt{background:rgba(43,51,39,.09);margin-top:10px}
+.feed .line{height:8px;border-radius:4px;background:rgba(43,51,39,.12)}
+.island{background:#000;color:var(--paper);border-radius:28px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.phone .island{position:absolute;top:14px;left:18px;right:18px}
+.island-over{font-size:8px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center}
+.island-title{font-family:var(--serif);font-size:20px;text-align:center}
+.island hr{border:0;border-top:1px dashed rgba(255,255,255,.35);margin:0}
+.island-row{display:flex;align-items:center;gap:10px}
+.island-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;height:40px;border:1px dashed rgba(255,255,255,.4);border-radius:8px;font-size:12px;font-weight:600;letter-spacing:.5px}
+.ring{position:relative;width:60px;height:60px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ring svg{position:absolute;inset:0}
+.ring span{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.caption{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.4;color:var(--muted);text-align:center;margin-top:20px;max-width:320px}
+
+/* ---------- Nav ---------- */
+.nav{display:flex;align-items:center;justify-content:space-between;height:88px}
+.brand{font-family:var(--serif);font-size:30px;color:var(--ink);text-decoration:none}
+.brand:hover{color:var(--ink)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a:not(.btn){font-size:15px;font-weight:500;color:var(--ink);text-decoration:none}
+.nav-links a:not(.btn):hover{color:var(--terra)}
+
+/* ---------- Sections ---------- */
+section{scroll-margin-top:24px}
+.hero{display:grid;grid-template-columns:minmax(0,620px) 400px;justify-content:space-between;align-items:center;gap:64px;padding-block:40px 60px;min-height:720px}
+.hero-copy{display:flex;flex-direction:column;gap:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px}
+.works{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin-top:8px}
+.works ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.hero-visual{display:flex;flex-direction:column;align-items:center}
+
+.recognition{padding-block:20px 60px}
+.recognition .card{max-width:860px;margin:0 auto;padding:44px 56px;transform:rotate(-.6deg);display:flex;flex-direction:column;gap:18px}
+.recognition .big{font-family:var(--serif);font-size:clamp(1.375rem, 1.1rem + 1vw, 1.75rem);line-height:1.4;color:var(--ink)}
+.recognition .body{font-size:17px}
+
+.section-head{display:flex;flex-direction:column;gap:14px}
+.section-head.center{align-items:center;text-align:center}
+
+.how{padding-block:40px 80px;display:flex;flex-direction:column;gap:44px}
+.beats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.beat{display:flex;flex-direction:column;gap:20px}
+.beat .card{height:300px;padding:28px;display:flex;flex-direction:column}
+.beat-text{display:flex;flex-direction:column;gap:8px}
+.composer{gap:16px}
+.composer .field{padding:14px 16px;border:1.5px dashed rgba(120,110,80,.45);border-radius:6px;font-family:var(--serif);font-size:22px}
+.composer .field span{color:var(--terra)}
+.chips{display:flex;align-items:center;gap:8px}
+.chip{font-size:12px;font-weight:600;padding:6px 12px;border:1.5px solid rgba(182,84,63,.5);border-radius:3px;color:var(--terra)}
+.chip.on{background:var(--terra);border-color:var(--terra);color:var(--paper)}
+.chips small{font-size:11px;color:var(--muted);margin-left:4px}
+.composer-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.dots{display:flex;gap:10px}
+.dots i{width:30px;height:30px;border-radius:50%;background:rgba(43,51,39,.10)}
+.dots i.on{border:2px solid var(--terra);background:rgba(182,84,63,.12)}
+.go{font-size:13px;font-weight:600;padding:9px 18px;background:var(--terra);color:var(--paper);border-radius:6px}
+.island-demo{align-items:center;justify-content:center;gap:18px}
+.pill{display:flex;align-items:center;gap:8px;padding:8px 16px;background:#000;border-radius:999px;color:var(--paper);font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.island-demo .island{width:232px;padding:14px;border-radius:24px;gap:10px}
+.island-demo .island-title{font-size:17px}
+.island-demo .island-btn{height:34px;font-size:11px}
+.mini-ring{width:40px;height:40px;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:var(--terra);border-right-color:var(--terra);flex-shrink:0}
+.closeout{gap:14px}
+.closeout .t{font-family:var(--serif);font-size:22px;text-align:center}
+.meta{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.closeout .meta{text-align:center}
+.rail{display:flex;gap:12px;justify-content:center;margin-top:6px}
+.note-field{padding:10px 12px;border:1.5px dashed var(--hair);border-radius:6px;font-size:13px;color:var(--muted);margin-top:auto}
+
+.archive{padding-block:60px;display:flex;flex-direction:column;gap:40px}
+.archive-head{display:flex;align-items:flex-end;justify-content:space-between;gap:48px}
+.archive-head .section-head{max-width:620px}
+.archive-head .body{max-width:440px;font-size:17px}
+.sessions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;list-style:none;margin:0;padding:0}
+.session{padding:22px;display:flex;flex-direction:column;gap:14px}
+.session-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.session-top h3{font-size:22px}
+.session .meta{font-size:11px;letter-spacing:.8px}
+.session .rail{justify-content:flex-start;gap:10px;margin:0}
+.empty-slot{width:76px;height:91px;border:1.5px dashed var(--hair);border-radius:4px;flex-shrink:0}
+.tags{display:flex;gap:6px}
+.subbeats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.subbeat{display:flex;gap:22px;align-items:flex-start}
+.subbeat-icon{flex-shrink:0;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.4);border:1.5px dashed rgba(43,51,39,.4);border-radius:4px}
+.subbeat .h3{font-size:24px;line-height:1.25}
+.subbeat > div:last-child{display:flex;flex-direction:column;gap:8px}
+
+.shield{display:grid;grid-template-columns:440px minmax(0,600px);grid-template-areas:"phone head" "phone text";justify-content:space-between;align-content:center;column-gap:64px;row-gap:22px;padding-block:60px}
+.shield .section-head{grid-area:head;align-self:end;gap:22px}
+.shield-phone{grid-area:phone;display:flex;justify-content:center;align-self:center}
+.shield-text{grid-area:text;display:flex;flex-direction:column;gap:22px;align-self:start}
+.shield-text .body{font-size:17px}
+.phone.shielded{width:300px;height:470px;border-radius:40px}
+.phone.shielded .feed{padding:40px 20px 0;gap:12px;filter:blur(3px);opacity:.6}
+.phone.shielded .feed .block{height:120px;background:rgba(43,51,39,.10)}
+.shield-card{position:absolute;top:96px;left:22px;right:22px;padding:26px 22px;transform:rotate(-1.2deg);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;box-shadow:0 12px 26px rgba(60,55,35,.28)}
+.shield-card .t{font-family:var(--serif);font-size:22px;line-height:1.2}
+.shield-card p{font-size:12px;line-height:1.5;color:var(--ink-soft)}
+.shield-card .go{width:100%;padding:11px 0}
+
+.privacy{padding-block:40px 60px;display:flex;flex-direction:column;gap:36px}
+.privacy .section-head{max-width:760px}
+.promises{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;list-style:none;margin:0;padding:0}
+.promise{padding:24px;background:rgba(255,255,255,.45);border:1.5px dashed rgba(43,51,39,.35);border-radius:4px;display:flex;flex-direction:column;gap:10px}
+.promise h3{font-size:22px}
+
+.founder{padding-block:40px}
+.founder .card{max-width:820px;margin:0 auto;padding:44px 56px;transform:rotate(.5deg);display:flex;flex-direction:column;gap:18px}
+.founder blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.25rem, 1.05rem + .8vw, 1.5rem);line-height:1.45}
+.sig{display:flex;align-items:center;flex-wrap:wrap;gap:4px 12px}
+.sig .name{font-family:var(--serif);font-style:italic;font-size:20px}
+.sig .role{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+
+.faq{padding-block:50px;display:flex;flex-direction:column;gap:36px}
+.faq dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 56px;margin:0}
+.faq dl > div{display:flex;flex-direction:column;gap:8px;padding-bottom:20px;border-bottom:1px dashed var(--hair)}
+.faq dt{font-family:var(--serif);font-size:22px;line-height:1.25}
+.faq dd{margin:0;display:flex;flex-direction:column;gap:12px}
+
+.cta{padding-block:80px;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.cta .h2{font-size:clamp(2rem, 1.4rem + 2vw, 3rem);max-width:800px}
+.cta .lede{max-width:560px;font-size:18px}
+.cta .btn{min-height:56px;padding:0 34px;font-size:18px;margin-top:6px}
+
+.footer{border-top:1px dashed var(--hair)}
+.footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:100px}
+.footer .brand{font-size:20px}
+.footer nav{display:flex;gap:8px}
+.footer nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;font-size:14px;color:var(--ink-soft);text-decoration:none}
+.footer nav a:hover{color:var(--terra)}
+.footer small{font-size:13px;color:var(--muted)}
+
+/* ---------- Tablet (< 1024) ---------- */
+@media (max-width: 1023px){
+  .hero{grid-template-columns:1fr;min-height:0;gap:40px;padding-block:24px 56px}
+  .hero-copy{max-width:640px}
+  .beats{grid-template-columns:1fr;gap:36px;max-width:560px;margin:0 auto;width:100%}
+  .beat .card{height:auto;min-height:0}
+  .archive-head{flex-direction:column;align-items:flex-start;gap:16px}
+  .archive-head .body{max-width:620px}
+  .shield{grid-template-columns:1fr;grid-template-areas:"head" "phone" "text";row-gap:28px}
+  .shield .section-head{gap:12px}
+  .shield-text{max-width:640px}
+  .promises{grid-template-columns:1fr;max-width:640px;gap:14px}
+  .faq dl{grid-template-columns:1fr;gap:16px}
+
+  /* Archive sessions become a swipeable row with a peek of the next card */
+  .sessions{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);margin-inline:calc(var(--gutter) * -1);padding:10px var(--gutter) 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .sessions::-webkit-scrollbar{display:none}
+  .session{flex:0 0 290px;scroll-snap-align:start}
+  .subbeats{grid-template-columns:1fr;gap:28px;max-width:640px}
+}
+
+/* ---------- Phone (< 640) ---------- */
+@media (max-width: 639px){
+  .nav{height:68px}
+  .brand{font-size:26px}
+  .nav-links a:not(.btn){display:none}
+
+  .eyebrow{font-size:11px;letter-spacing:1.6px}
+  .hero{padding-block:20px 48px;gap:22px}
+  .hero-copy{gap:22px}
+  .hero-actions{flex-direction:column;gap:12px}
+  .hero-actions .btn{width:100%}
+  .works{flex-direction:column;align-items:flex-start;gap:10px}
+  .phone{width:280px;height:400px;border-radius:40px;border-width:9px}
+  .feed{padding:160px 20px 0;gap:12px}
+  .feed .block{height:130px}
+  .phone .island{top:12px;left:14px;right:14px;padding:14px;border-radius:26px;gap:10px}
+  .island-title{font-size:18px}
+  .island-row{gap:8px}
+  .island-btn{height:36px;font-size:11px}
+  .ring{width:52px;height:52px}
+  .ring span{font-size:12px}
+  .caption{margin-top:14px;max-width:300px}
+
+  .recognition{padding-block:8px 52px}
+  .recognition .wrap{padding-inline:20px}
+  .recognition .card{padding:28px 24px;gap:14px}
+  .recognition .body{font-size:16px}
+
+  .how{padding-block:24px 52px;gap:32px}
+  .beats{gap:32px}
+  .beat{gap:18px}
+  .beat .card{padding:22px}
+  .composer .field{font-size:20px;padding:12px 14px}
+  .chip{padding:6px 11px}
+  .dots{gap:8px}
+  .dots i{width:26px;height:26px}
+  .hide-sm{display:none !important}
+  .island-demo{padding:24px 22px}
+
+  .archive{padding-block:32px 52px;gap:28px}
+  .archive-head .body{font-size:16px}
+  .session{padding:20px;gap:12px}
+  .session-top h3{font-size:21px}
+  .subbeat-icon{display:none}
+  .subbeat .h3{font-size:22px}
+
+  .shield{padding-block:32px 52px}
+  .phone.shielded{width:260px;height:350px;border-radius:38px;border-width:9px}
+  .phone.shielded .feed{padding:36px 18px 0}
+  .phone.shielded .feed .block{height:100px}
+  .shield-card{top:48px;left:16px;right:16px;padding:22px 18px;gap:12px}
+  .shield-card .t{font-size:20px}
+  .shield-text{gap:16px}
+  .shield-text .body{font-size:16px}
+
+  .privacy{padding-block:32px 52px;gap:24px}
+  .promise{padding:18px;gap:8px}
+  .promise h3{font-size:21px}
+
+  .founder{padding-block:24px 52px}
+  .founder .wrap{padding-inline:20px}
+  .founder .card{padding:28px 24px;gap:16px}
+  .sig{flex-direction:column;align-items:flex-start}
+  .sig .role{font-size:11px}
+
+  .faq{padding-block:32px 56px;gap:24px}
+  .faq dl > div{gap:6px;padding-bottom:16px}
+  .faq dt{font-size:20px}
+
+  .cta{padding-block:56px 64px;gap:18px}
+  .cta .lede{font-size:16px}
+  .cta .btn{width:100%;min-height:54px;font-size:17px}
+
+  .footer .wrap{flex-direction:column;justify-content:center;gap:8px;padding-block:22px 28px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="#top" aria-label="Antirot home">Antirot</a>
+  <nav class="nav-links" aria-label="Main">
+    <a href="#how">How it works</a>
+    <a href="#archive">The archive</a>
+    <a href="#privacy">Privacy</a>
+    <a class="btn btn-sm js-join" href="#join">Join the beta</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Screentime manager and archive for iPhone</p>
+      <h1 id="hero-title" class="h1">Use social media with intention, and save what&rsquo;s <em>worth keeping.</em></h1>
+      <p class="lede">Set an intention before you scroll. Everything you save, from every app, lands in one archive with your notes.</p>
+      <div class="hero-actions">
+        <a class="btn js-join" href="#join">Join the beta</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <div class="works">
+        <span class="eyebrow">Works with</span>
+        <ul>
+          <li class="stamp tilt-a">Instagram</li>
+          <li class="stamp tilt-b">TikTok</li>
+          <li class="stamp tilt-c">YouTube</li>
+          <li class="stamp tilt-d">Pinterest</li>
+          <li class="stamp tilt-e">Facebook</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone" role="img" aria-label="An iPhone showing the Antirot timer in the Dynamic Island with the intention “find 3 recipes,” 6 minutes 48 seconds left, and buttons to add five minutes or end the session.">
+        <div class="feed" aria-hidden="true">
+          <div class="block"></div>
+          <div class="line" style="width:150px"></div>
+          <div class="line" style="width:96px;opacity:.7"></div>
+          <div class="block alt"></div>
+          <div class="line" style="width:130px"></div>
+        </div>
+        <div class="island" aria-hidden="true">
+          <div>
+            <div class="island-over">Scroll with intention</div>
+            <div class="island-title">find 3 recipes</div>
+          </div>
+          <hr>
+          <div class="island-row">
+            <div class="island-btn">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1v10M1 6h10"/></svg>
+              <span>5 MIN</span>
+            </div>
+            <div class="ring">
+              <svg viewBox="0 0 60 60" width="100%" height="100%"><circle cx="30" cy="30" r="26" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="4"/><circle cx="30" cy="30" r="26" fill="none" stroke="#b6543f" stroke-width="4" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="52" transform="rotate(-90 30 30)"/></svg>
+              <span>6:48</span>
+            </div>
+            <div class="island-btn">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l3 3 5-7"/></svg>
+              <span>END</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="caption">Your intention sits at the top of the screen the whole time.</p>
+    </div>
+  </section>
+
+  <!-- Recognition -->
+  <section class="recognition" aria-label="A familiar story">
+    <div class="wrap">
+      <div class="card">
+        <p class="eyebrow">Let&rsquo;s say...</p>
+        <p class="big">You opened TikTok to find that pasta recipe. Forty minutes later you know a surprising amount about restoring cast iron pans, and the recipe is nowhere.</p>
+        <p class="body">The apps are built to do this to you. Antirot gives you a way to walk in with a reason, have an easier way out, and save what you want to in a place with fewer attention traps.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="wrap how" aria-labelledby="how-title">
+    <div class="section-head center">
+      <p class="eyebrow">How a session works</p>
+      <h2 id="how-title" class="h2">Three beats, every time you go in.</h2>
+    </div>
+
+    <div class="beats">
+      <article class="beat">
+        <div class="card composer" style="transform:rotate(-.8deg)" aria-hidden="true">
+          <div class="eyebrow" style="font-size:11px;letter-spacing:1.4px">Why are you going in?</div>
+          <div class="field">find 3 recipes<span>|</span></div>
+          <div class="chips">
+            <div class="chip">5</div><div class="chip on">10</div><div class="chip">20</div><div class="chip">40</div><small>minutes</small>
+          </div>
+          <div class="composer-foot">
+            <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i></div>
+            <div class="go">Go</div>
+          </div>
+        </div>
+        <div class="beat-text">
+          <h3 class="h3">Go in with an intention.</h3>
+          <p class="body">Say why you&rsquo;re opening the app and how long you&rsquo;ll stay. Antirot opens it for you.</p>
+        </div>
+      </article>
+
+      <article class="beat">
+        <div class="card island-demo" style="transform:rotate(.6deg)" aria-hidden="true">
+          <div class="pill hide-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b6543f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0-2 3 3 3 0 0 0 1 5 3 3 0 0 0 4 3h1V4H9zM15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 2 3 3 3 0 0 1-1 5 3 3 0 0 1-4 3h-1V4h1z"/></svg>
+            6:48
+          </div>
+          <svg class="hide-sm" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a8163" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+          <div class="island">
+            <div class="island-title">find 3 recipes</div>
+            <hr>
+            <div class="island-row" style="gap:8px">
+              <div class="island-btn">+ 5 MIN</div>
+              <div class="mini-ring"></div>
+              <div class="island-btn">END</div>
+            </div>
+          </div>
+        </div>
+        <div class="beat-text">
+          <h3 class="h3">Your reason stays in view.</h3>
+          <p class="body">The countdown and your intention live in the Dynamic Island. Add five minutes or end the session with one tap.</p>
+        </div>
+      </article>
+
+      <article class="beat">
+        <div class="card closeout" style="transform:rotate(-.5deg)" aria-hidden="true">
+          <div class="t">find 3 recipes</div>
+          <div class="meta">3 saves · 10 minutes</div>
+          <div class="rail">
+            <div class="polaroid sm" style="transform:rotate(-3deg)"><div style="background:#c9b58f"></div></div>
+            <div class="polaroid sm" style="transform:rotate(2deg)"><div style="background:#9fb08a"></div></div>
+            <div class="polaroid sm" style="transform:rotate(-1.5deg)"><div style="background:#b6543f"></div></div>
+          </div>
+          <div class="note-field">Any last thoughts?</div>
+        </div>
+        <div class="beat-text">
+          <h3 class="h3">Every session ends with what you gathered.</h3>
+          <p class="body">Close out with your saves in a row and a note if you want one. Wander off and the session closes itself.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Archive -->
+  <section id="archive" class="wrap archive" aria-labelledby="archive-title">
+    <div class="archive-head">
+      <div class="section-head">
+        <p class="eyebrow">The archive</p>
+        <h2 id="archive-title" class="h2">Everything worth keeping, from every app, in one place.</h2>
+      </div>
+      <p class="body">Sessions are titled by what you went in for. Open one and you see the posts, videos, and screenshots you saved, with the note you wrote at the time. You never have to open the feed to find them again.</p>
+    </div>
+
+    <ul class="sessions" aria-label="Example sessions">
+      <li class="card session" style="transform:rotate(-1deg)">
+        <div class="session-top"><h3>find 3 recipes</h3><span class="stamp stamp-sm" style="transform:rotate(2deg)">TikTok</span></div>
+        <div class="meta">10 minutes · yesterday</div>
+        <div class="rail" aria-hidden="true">
+          <div class="polaroid" style="transform:rotate(-3deg)"><div style="background:#c9b58f"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0zM8 11V5M12 11V4M16 11V6"/></svg></div></div>
+          <div class="polaroid" style="transform:rotate(2deg)"><div style="background:#9fb08a"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div></div>
+          <div class="polaroid" style="transform:rotate(-1deg)"><div style="background:#a86b56"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16M6 19V9l6-5 6 5v10"/></svg></div></div>
+        </div>
+        <div class="tags"><span class="stamp stamp-sm">cooking</span><span class="stamp stamp-sm">weeknight</span></div>
+      </li>
+      <li class="card session" style="transform:rotate(.8deg)">
+        <div class="session-top"><h3>gift ideas for Mara</h3><span class="stamp stamp-sm" style="transform:rotate(-2deg)">Pinterest</span></div>
+        <div class="meta">5 minutes · Tuesday</div>
+        <div class="rail" aria-hidden="true">
+          <div class="polaroid" style="transform:rotate(2deg)"><div style="background:#8a8163"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M4 12h16M12 9v11M8 9a2 2 0 1 1 4 0 2 2 0 1 1 4 0"/></svg></div></div>
+          <div class="polaroid" style="transform:rotate(-2.5deg)"><div style="background:#c9b58f"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12M5 20h14M9 6V4M15 6V4"/></svg></div></div>
+          <div class="empty-slot"></div>
+        </div>
+        <div class="tags"><span class="stamp stamp-sm">gifts</span></div>
+      </li>
+      <li class="card session" style="transform:rotate(-.4deg)">
+        <div class="session-top"><h3>reference for the mural</h3><span class="stamp stamp-sm" style="transform:rotate(1.5deg)">YouTube</span></div>
+        <div class="meta">20 minutes · last week</div>
+        <div class="rail" aria-hidden="true">
+          <div class="polaroid" style="transform:rotate(-1.5deg)"><div style="background:#6f7a5e"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l5-8 4 5 3-3 4 6H4z"/><circle cx="8" cy="7" r="2"/></svg></div></div>
+          <div class="polaroid" style="transform:rotate(3deg)"><div style="background:#b6543f"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l10 6-10 6V6z"/></svg></div></div>
+          <div class="polaroid" style="transform:rotate(-2deg)"><div style="background:#9fb08a"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fbf8ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4zM13 8l3 3"/></svg></div></div>
+        </div>
+        <div class="tags"><span class="stamp stamp-sm">studio</span><span class="stamp stamp-sm">color</span></div>
+      </li>
+    </ul>
+
+    <div class="subbeats">
+      <div class="subbeat">
+        <div class="subbeat-icon" style="transform:rotate(-3deg)" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2b3327" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
+        </div>
+        <div>
+          <h3 class="h3">Save from any share sheet, with a note while it&rsquo;s fresh.</h3>
+          <p class="body">Links, screenshots, and screen recordings all count. Tap Share, pick Antirot, write a line about why it mattered, and it files itself into the session you&rsquo;re in.</p>
+        </div>
+      </div>
+      <div class="subbeat">
+        <div class="subbeat-icon" style="transform:rotate(2deg)" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2b3327" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        </div>
+        <div>
+          <h3 class="h3">Gather what you save into collections.</h3>
+          <p class="body">Tag saves as you go, and pull the ones that belong together into a collection. A recipe from TikTok can sit next to a video from YouTube and a pin from Pinterest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shield -->
+  <section class="wrap shield" aria-labelledby="shield-title">
+    <div class="section-head">
+      <p class="eyebrow">Your accountability buddy</p>
+      <h2 id="shield-title" class="h2">Opened an app out of habit? Antirot asks what you came for.</h2>
+    </div>
+    <div class="shield-phone">
+      <div class="phone shielded" role="img" aria-label="An iPhone where Instagram is covered by the Antirot shield, asking “What did you come here for?” with a button to set an intention.">
+        <div class="feed" aria-hidden="true">
+          <div class="block"></div>
+          <div class="line" style="width:140px;background:rgba(43,51,39,.14)"></div>
+          <div class="block" style="margin-top:8px;background:rgba(43,51,39,.12)"></div>
+          <div class="line" style="width:110px;background:rgba(43,51,39,.14)"></div>
+          <div class="block" style="margin-top:8px"></div>
+        </div>
+        <div class="card shield-card" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#b6543f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0-2 3 3 3 0 0 0 1 5 3 3 0 0 0 4 3h1V4H9zM15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 2 3 3 3 0 0 1-1 5 3 3 0 0 1-4 3h-1V4h1z"/></svg>
+          <div class="t">What did you come here for?</div>
+          <p>Set an intention and Antirot will open Instagram for you.</p>
+          <div class="go">Set an intention</div>
+        </div>
+      </div>
+    </div>
+    <div class="shield-text">
+      <p class="body">Whenever no session is running, a shield sits over the five apps. Tap through and you land on the intention screen, set your reason and your time, and then you&rsquo;re in. The habit still works. It just starts with a question now.</p>
+      <p class="body">If you&rsquo;d rather skip the shield, put the Antirot widget where the app icon used to be. Same spot, same thumb, and every visit starts with a why.</p>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section id="privacy" class="wrap privacy" aria-labelledby="privacy-title">
+    <div class="section-head">
+      <p class="eyebrow">Privacy</p>
+      <h2 id="privacy-title" class="h2">Everything stays on your phone, with no account to make.</h2>
+    </div>
+    <ul class="promises">
+      <li class="promise">
+        <h3>No account, no sign in</h3>
+        <p class="small">Download it and start. There is nothing to create, confirm, or remember.</p>
+      </li>
+      <li class="promise">
+        <h3>Your archive lives on your iPhone</h3>
+        <p class="small">Sessions, saves, and notes are stored in a local database on your device. Antirot has no servers holding a copy.</p>
+      </li>
+      <li class="promise">
+        <h3>Screen Time holds the door</h3>
+        <p class="small">Antirot uses Apple&rsquo;s Screen Time framework to shield apps. Apple built it so an app like Antirot never sees what you watch or who you follow.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Founder note -->
+  <section class="founder" aria-label="A note from the maker">
+    <div class="wrap">
+      <figure class="card" style="margin:0 auto">
+        <p class="eyebrow">A note from the maker</p>
+        <blockquote>I make things for a living, and social media is where the people who might care about them spend their time. Quitting social media was never realistic. What I wanted was a way to go in with a reason and come out with what I needed&mdash;consolidated, organized and accessible in one place, and without the continued attention trap. Antirot is that, built for myself first, and then made ready for you.</blockquote>
+        <figcaption class="sig"><span class="name">Darby</span><span class="role">Solo dev of Antirot</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap faq" aria-labelledby="faq-title">
+    <div class="section-head">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-title" class="h2">The things people ask first.</h2>
+    </div>
+    <dl>
+      <div>
+        <dt>Which apps does it work with?</dt>
+        <dd><p class="small">Instagram, TikTok, YouTube, Pinterest, and Facebook. But truthfully, you can save photos, videos or links from anywhere across the internet, with notes, and they are still tag-gable. The only difference is those aren&rsquo;t part of a &lsquo;session&rsquo; with an intention and time limit like the supported platforms.</p></dd>
+      </div>
+      <div>
+        <dt>Which iPhones does it run on?</dt>
+        <dd><p class="small">Any iPhone on iOS 18 or later. The Dynamic Island features need a phone that has one.</p></dd>
+      </div>
+      <div>
+        <dt>What happens when my time runs out?</dt>
+        <dd><p class="small">The shield comes back and the session moves to its close out. If you need longer, add five minutes from the Dynamic Island or the app. Extending is always your call.</p></dd>
+      </div>
+      <div>
+        <dt>Can I still get in when I really need to?</dt>
+        <dd><p class="small">Always. Antirot never locks you out. It asks for a reason and a length, then opens the door. This is more of mindful scrolling tool than one that enforces abstinence. It just asks you to be mindful about why and for how long you scroll.</p></dd>
+      </div>
+      <div>
+        <dt>What does it cost?</dt>
+        <dd>
+          <p class="small">Free trial then $3.99 /month OR you can buy Antirot Lifetime for $49.99.</p>
+          <p class="small">Me and everyone else are so sick of subscriptions. So try it for low cost, and then keep your archive forever.</p>
+        </dd>
+      </div>
+      <div>
+        <dt>Do my saves survive if a post gets deleted?</dt>
+        <dd><p class="small">Antirot stores the preview image and your note on your phone, so the memory of it stays even if the link goes dead. Screenshots and screen recordings are yours outright.</p></dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- Closing CTA -->
+  <section id="join" class="wrap cta" aria-labelledby="cta-title">
+    <h2 id="cta-title" class="h2">Use social media with intention, and save what&rsquo;s <em>worth keeping.</em></h2>
+    <p class="lede">Antirot is in beta for iPhone. Get an invite and be among the first to try it.</p>
+    <a class="btn js-join" href="#join">Join the beta</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <a class="brand" href="#top">Antirot</a>
+    <nav aria-label="Footer">
+      <!-- Point these at real pages before launch. The App Store requires a privacy policy URL. -->
+      <a href="#privacy">Privacy</a>
+      <a href="mailto:YOUR-EMAIL@example.com">Support</a>
+      <a href="#">Press kit</a>
+    </nav>
+    <small>Made by one person. 2026.</small>
+  </div>
+</footer>
+
+<script>
+  /* ------------------------------------------------------------
+     Set your beta link here (TestFlight public link, waitlist
+     form, or App Store URL). Every "Join the beta" button uses it.
+     Leave it empty to keep the buttons scrolling to the bottom CTA.
+     ------------------------------------------------------------ */
+  const JOIN_URL = "";
+
+  if (JOIN_URL) {
+    document.querySelectorAll('.js-join').forEach(function (a) {
+      a.href = JOIN_URL;
+      if (/^https?:/.test(JOIN_URL)) { a.target = "_blank"; a.rel = "noopener"; }
+    });
+  }
+</script>
+</body>
+</html>
