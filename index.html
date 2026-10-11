@@ -7,12 +7,12 @@
 <meta name="description" content="Set an intention before you scroll. Everything you save from Instagram, TikTok, YouTube, Pinterest, and Facebook lands in one archive with your notes.">
 <meta name="theme-color" content="#f5f8ee">
 
-<!-- Social previews. Replace the URL and add og-image.png (1200×630) next to this file. -->
+<!-- Social previews. Add og-image.png (1200×630) next to this file. -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Antirot">
 <meta property="og:description" content="Use social media with intention, and save what's worth keeping.">
-<meta property="og:url" content="https://YOUR-DOMAIN.com/">
-<meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.png">
+<meta property="og:url" content="https://antirotmanifesto.com/">
+<meta property="og:image" content="https://antirotmanifesto.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
@@ -654,8 +654,7 @@ section{scroll-margin-top:24px}
   <div class="wrap">
     <a class="brand" href="#top">Antirot</a>
     <nav aria-label="Footer">
-      <!-- Point these at real pages before launch. The App Store requires a privacy policy URL. -->
-      <a href="./privacy.html">Privacy</a>
+      <a href="https://antirotmanifesto.com/privacy.html">Privacy</a>
       <a href="mailto:Antirotapp@gmail.com">Support</a>
       <a href="#">Press kit</a>
     </nav>
@@ -669,7 +668,9 @@ section{scroll-margin-top:24px}
      form, or App Store URL). Every "Join the beta" button uses it.
      Leave it empty to keep the buttons scrolling to the bottom CTA.
      ------------------------------------------------------------ */
-  const JOIN_URL = "";
+  const JOIN_URL = "mailto:antirotapp@gmail.com"
+    + "?subject=" + encodeURIComponent("Antirot beta invite")
+    + "&body=" + encodeURIComponent("Hi Darby,\n\nI'd love to try the Antirot beta. Please send my TestFlight invite to this address.\n\n");
 
   if (JOIN_URL) {
     document.querySelectorAll('.js-join').forEach(function (a) {
