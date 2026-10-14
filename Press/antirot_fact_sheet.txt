@@ -1,0 +1,46 @@
+ANTIROT PRESS FACT SHEET
+Last updated: [date]
+
+AT A GLANCE
+App: Antirot
+Tagline: Use social media with intention, and save what's worth keeping.
+Platform: iPhone, iOS 18 or later
+Works with: Instagram, TikTok, Pinterest, YouTube and Facebook
+Price: Free trial, then $3.99 a month, or $49.99 once for Antirot Lifetime. Prices in US dollars; local pricing varies by region.
+Availability: [Launch date] on the App Store
+App Store: [App Store link]
+Developer: Darby [surname], independent developer and roller skating creator
+Website: antirotmanifesto.com
+Press kit: antirotmanifesto.com/press/press_kit.html
+Press contact: Antirotapp@gmail.com
+Privacy: No account, no Antirot servers, data stored on your iPhone
+
+ONE LINE
+Antirot is an iPhone app that asks what you came for before it opens Instagram, TikTok, Pinterest, YouTube or Facebook, then keeps the things worth saving.
+
+SHORT (ABOUT 75 WORDS)
+Antirot is an iPhone app that puts a question between you and your social apps. When you open Instagram, TikTok, Pinterest, YouTube or Facebook, Antirot asks what you came for and how long you want to stay, then lets you in with a timer running. Links and screenshots worth keeping go into an archive, filed under the session that found them. When time is up, the door closes again, and everything stays on your phone.
+
+LONG (ABOUT 150 WORDS)
+Antirot is an iPhone app for people who open social media with a purpose and lose it somewhere in the feed. It locks Instagram, TikTok, Pinterest, YouTube and Facebook behind a simple prompt: what are you here for, and for how long? Set an intention, choose anywhere from 1 to 40 minutes, and the app opens with a countdown on the Lock Screen and in the Dynamic Island.
+
+A reel, a link or a screenshot worth keeping can be shared to Antirot, where it's filed under the session that found it with its creator, caption and thumbnail. Tags and collections gather the best finds over time. When the timer ends, the apps lock again and Antirot shows what you set out to do and what you kept.
+
+Antirot has no account and stores everything on your iPhone. It starts with a free trial, then costs $3.99 a month, or $49.99 once for Antirot Lifetime. It was designed and built by Darby [surname], an independent developer and roller skating creator.
+
+PRICING
+Free trial: [Trial length] with everything included.
+Monthly: $3.99 a month. Everything in Antirot, billed monthly.
+Antirot Lifetime: $49.99 once. Everything in Antirot, paid once and yours to keep.
+
+PRIVACY
+Nothing to sign up for. Antirot has no account and no Antirot server. Your sessions, notes, tags and saves are stored on your iPhone.
+Locks without looking. Apple's Screen Time framework gives Antirot an anonymous reference to each app you choose, enough to lock and unlock it. Antirot never sees what you do inside those apps or how long you spend in them.
+Previews, and nothing else. When you save a link, Antirot fetches a preview from that page, or from TikTok for TikTok links, so your archive shows a thumbnail and caption. Antirot sends the link itself and adds nothing about you.
+Full policy: antirotmanifesto.com/privacy.html
+
+REVIEW ACCESS
+Writers reviewing Antirot can email Antirotapp@gmail.com for a complimentary full access code. Darby is available for interviews by email, phone or video.
+
+EDITORIAL USE
+Screenshots, video, icon, wordmark and photos in this kit may be used freely in coverage of Antirot. Please credit photos as noted.
