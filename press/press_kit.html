@@ -99,9 +99,6 @@ section{scroll-margin-top:20px}
 .hero-actions{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px}
 .with-note{display:flex;flex-direction:column;align-items:center;gap:6px}
 .with-note .small{font-size:13px}
-.badge{display:inline-flex;min-height:52px;align-items:center}
-.badge img{height:52px;width:auto}
-.badge .ph{width:156px;height:52px;border-radius:8px}
 .phones{position:relative;height:620px}
 .phone{position:absolute;width:270px;border:10px solid var(--ink);border-radius:44px;background:#000;overflow:hidden;box-shadow:0 30px 60px rgba(43,51,39,.3)}
 .phone img,.phone .ph{width:100%;aspect-ratio:1320/2868;object-fit:cover;border-radius:34px}
@@ -250,7 +247,6 @@ section{scroll-margin-top:20px}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn{width:100%}
   .with-note{align-items:stretch;text-align:center}
-  .badge{justify-content:center}
   .phone{width:240px;border-width:9px;border-radius:40px}
 
   .facts dl{grid-template-columns:1fr;padding:8px 20px}
@@ -316,10 +312,7 @@ section{scroll-margin-top:20px}
         <a class="btn" href="assets/antirot_press_kit.zip" download>Download press kit</a>
         <span class="small">ZIP<span class="js-size" data-file="assets/antirot_press_kit.zip"></span></span>
       </div>
-      <!-- Official badge from Apple's Marketing Tools: save it as assets/app_store_badge.svg -->
-      <a class="badge" href="[App Store link]" aria-label="Download Antirot on the App Store">
-        <img src="assets/app_store_badge.svg" alt="Download on the App Store" height="52"><span class="ph">app_store_badge.svg</span>
-      </a>
+      <a class="btn btn-ghost js-join" href="#contact">Join the beta</a>
       <a class="btn btn-ghost" href="mailto:Antirotapp@gmail.com?subject=Antirot%20press">Contact Darby</a>
     </div>
   </div>
@@ -329,7 +322,7 @@ section{scroll-margin-top:20px}
       <img src="assets/02_intention.png" alt=""><span class="ph">02_intention.png</span>
     </div>
     <div class="phone front">
-      <img src="assets/01_shield.png" alt="The Antirot shield covering Instagram, asking what you came for before the app opens."><span class="ph">01_shield.png</span>
+      <img src="assets/05_close_out.png" alt="The Antirot close out screen showing the session's intention, its saves and a notes field."><span class="ph">05_close_out.png</span>
     </div>
   </div>
 </section>
@@ -345,9 +338,9 @@ section{scroll-margin-top:20px}
     <dt>Tagline</dt><dd>Use social media with intention, and save what&rsquo;s worth keeping.</dd>
     <dt>Platform</dt><dd>iPhone, iOS 18 or later</dd>
     <dt>Works with</dt><dd>Instagram, TikTok, Pinterest, YouTube and Facebook</dd>
-    <dt>Price</dt><dd>Free trial, then $3.99 a month, or $49.99 once for Antirot Lifetime.</dd>
-    <dt>Availability</dt><dd>[Launch date] on the App Store</dd>
-    <dt>App Store</dt><dd><a href="[App Store link]">[App Store link]</a></dd>
+    <dt>Price</dt><dd>Free during the beta. At launch, a free trial, then $3.99 a month, or $49.99 once for Antirot Lifetime.</dd>
+    <dt>Availability</dt><dd>In beta on TestFlight, ahead of its App Store release</dd>
+    <dt>Beta</dt><dd><a class="js-join" href="#contact">Join the beta</a></dd>
     <dt>Developer</dt><dd>Darby Tarlow, independent developer and roller skating creator</dd>
     <dt>Website</dt><dd><a href="https://antirotmanifesto.com">antirotmanifesto.com</a></dd>
     <dt>Press contact</dt><dd><a href="mailto:Antirotapp@gmail.com">Antirotapp@gmail.com</a></dd>
@@ -483,7 +476,7 @@ section{scroll-margin-top:20px}
     <li class="price"><span class="name">Monthly</span><span class="amount">$3.99 a month</span><p class="body">Everything in Antirot, billed monthly</p></li>
     <li class="price"><span class="name">Antirot Lifetime</span><span class="amount">$49.99 once</span><p class="body">Everything in Antirot, paid once and yours to keep</p></li>
   </ul>
-  <p class="small">Prices in US dollars. Local pricing varies by region.</p>
+  <p class="small">Pricing at launch, in US dollars. Local pricing varies by region. Everything is free during the beta.</p>
 </section>
 
 <!-- 8. Screenshots and downloads -->
@@ -621,7 +614,7 @@ section{scroll-margin-top:20px}
   <div class="card contact">
     <p class="eyebrow">Review access and contact</p>
     <h2 id="contact-title" class="h2">Writing about Antirot?</h2>
-    <p class="body" style="font-size:17px;max-width:680px">Antirot comes with a free trial on the App Store. If you&rsquo;re reviewing it, email me and I&rsquo;ll send a code for complimentary full access. I&rsquo;m happy to do interviews by email, phone or video, and to talk about building an app alone, Apple&rsquo;s Screen Time tools, or what skating content taught me about social media.</p>
+    <p class="body" style="font-size:17px;max-width:680px">Antirot is in beta on TestFlight. If you&rsquo;re writing about it, email me and I&rsquo;ll send you an invite, plus complimentary full access once it launches. I&rsquo;m happy to do interviews by email, phone or video, and to talk about building an app alone, Apple&rsquo;s Screen Time tools, or what skating content taught me about social media.</p>
     <a class="btn" href="mailto:Antirotapp@gmail.com?subject=Antirot%20press">Email Darby</a>
     <p class="small">I usually reply within one or two days. Darby, Indochina Time.</p>
   </div>
@@ -655,6 +648,15 @@ section{scroll-margin-top:20px}
 
 <script>
 (function () {
+  // Beta link for every "Join the beta" button. Swap in a TestFlight public link later if you open one.
+  var JOIN_URL = "mailto:antirotapp@gmail.com"
+    + "?subject=" + encodeURIComponent("Antirot beta invite (press)")
+    + "&body=" + encodeURIComponent("Hi Darby,\n\nI'm writing about Antirot and would love to try the beta. Please send the TestFlight invite to this address, or to the Apple ID email below if it's different.\n\n");
+  document.querySelectorAll('.js-join').forEach(function (a) {
+    a.href = JOIN_URL;
+    if (/^https?:/.test(JOIN_URL)) { a.target = "_blank"; a.rel = "noopener"; }
+  });
+
   // Placeholder frames for images that haven't been uploaded yet.
   function markMissing(img) { if (img.parentElement) img.parentElement.classList.add('missing'); }
   document.querySelectorAll('img').forEach(function (img) {
