@@ -377,7 +377,9 @@ body.has-selection .selbar{ display:flex; }
     if (img.complete && !img.naturalWidth) drop(); else img.addEventListener("error", drop);
   });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mp4-muxer@5.2.2/build/mp4-muxer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mp4-muxer@5.2.2/build/mp4-muxer.js"
+        integrity="sha384-wr0AQH9RBAKio/g7bHM5245MBCU5B/b0Y9u42cTxRYQQJXKEijZvWEJKL9JG26hs"
+        crossorigin="anonymous"></script>
 <script>
 (function(){
   "use strict";
@@ -394,6 +396,10 @@ body.has-selection .selbar{ display:flex; }
     return { fps, perPhoto: Math.round(hold * fps) };
   }
   const tsAt = (j, fps) => Math.round(j * 1e6 / fps);
+  // Limits that keep the tab inside device memory, especially on iPhone.
+  const MAX_PHOTOS = 200;
+  const MAX_SECONDS = 600;
+  const MAX_BYTES = 300 * 1048576;
   // Logarithmic slider so short holds get most of the track.
   const holdToPos = (h) => Math.round(1000 * Math.log(h / HOLD_MIN) / Math.log(HOLD_MAX / HOLD_MIN));
   const posToHold = (p) => snapHold(HOLD_MIN * Math.pow(HOLD_MAX / HOLD_MIN, p / 1000));
@@ -416,14 +422,6 @@ body.has-selection .selbar{ display:flex; }
   function persist(){
     try { localStorage.setItem("flipbook.settings", JSON.stringify({ shape: state.shape, fit: state.fit, loops: state.loops, hold: state.hold })); } catch (e) {}
   }
-
-  // Downloads capability (published page). Absent elsewhere.
-  let downloads = null;
-  try {
-    if (window.claude && typeof window.claude.use === "function") {
-      window.claude.use("downloads").then((d) => { downloads = d; }).catch(() => {});
-    }
-  } catch (e) {}
 
   // ---------- Geometry ----------
   const even = (n) => Math.max(2, Math.round(n / 2) * 2);
@@ -475,11 +473,12 @@ body.has-selection .selbar{ display:flex; }
 
   let nextId = 1;
   async function addFiles(fileList){
-    const files = Array.from(fileList).filter((f) => (f.type && f.type.startsWith("image/")) || /\.(heic|heif|jpe?g|png|webp|gif)$/i.test(f.name));
+    const files = Array.from(fileList).filter((f) => f.type !== "image/svg+xml" && ((f.type && f.type.startsWith("image/")) || /\.(heic|heif|jpe?g|png|webp|gif)$/i.test(f.name)));
     if (!files.length) return;
     hideError();
-    let failed = 0;
+    let failed = 0, skipped = 0;
     for (const file of files) {
+      if (state.photos.length >= MAX_PHOTOS) { skipped++; continue; }
       try {
         const d = await decode(file);
         const long = 720;
@@ -490,13 +489,23 @@ body.has-selection .selbar{ display:flex; }
         c.getContext("2d").drawImage(d.src, 0, 0, c.width, c.height);
         d.close();
         const blob = await canvasToBlob(c, "image/jpeg", 0.82);
-        state.photos.push({ id: nextId++, name: file.name || "", file, w: d.w, h: d.h, thumb: c, url: blob ? URL.createObjectURL(blob) : "" });
+        const tw = c.width, th = c.height;
+        c.width = c.height = 0; // releases the backing store; iOS caps total canvas memory
+        if (!blob) throw new Error("thumbnail");
+        const url = URL.createObjectURL(blob);
+        const thumb = new Image();
+        thumb.src = url;
+        try { await thumb.decode(); } catch (e) { URL.revokeObjectURL(url); throw e; }
+        state.photos.push({ id: nextId++, name: file.name || "", file, w: d.w, h: d.h, thumb, tw, th, url });
         render();
       } catch (e) {
         failed++;
       }
     }
-    if (failed) showError(failed === 1 ? "One file couldn’t be read. JPEG, PNG and HEIC photos work best." : failed + " files couldn’t be read. JPEG, PNG and HEIC photos work best.");
+    const problems = [];
+    if (failed) problems.push(failed === 1 ? "One file couldn’t be read. JPEG, PNG and HEIC photos work best." : failed + " files couldn’t be read. JPEG, PNG and HEIC photos work best.");
+    if (skipped) problems.push("Flipbooks hold up to " + MAX_PHOTOS + " photos, so " + (skipped === 1 ? "one photo wasn’t" : skipped + " photos weren’t") + " added.");
+    if (problems.length) showError(problems.join(" "));
   }
 
   // ---------- Rendering ----------
@@ -530,7 +539,7 @@ body.has-selection .selbar{ display:flex; }
     const i = ((idx % n) + n) % n;
     state.frameIdx = i;
     const p = state.photos[i];
-    drawInto(pctx, p.thumb, p.thumb.width, p.thumb.height, preview.width, preview.height, state.fit);
+     drawInto(pctx, p.thumb, p.tw, p.th, preview.width, preview.height, state.fit);
     $("counter").textContent = (i + 1) + " / " + n;
   }
 
@@ -672,6 +681,10 @@ body.has-selection .selbar{ display:flex; }
     const { fps, perPhoto } = timing(hold);
     const ts = (j) => tsAt(j, fps);
     if (!n) return;
+    if (n * loops * hold > MAX_SECONDS) {
+      showError("Flipbooks can run up to 10 minutes. Try fewer loops or a shorter hold.");
+      return;
+    }
     if (!("VideoEncoder" in window) || !("VideoFrame" in window)) {
       showError("This browser can’t make videos. Open the page in a current version of Safari or Chrome.");
       return;
@@ -734,6 +747,12 @@ body.has-selection .selbar{ display:flex; }
       encoder = null;
       for (let j = 0; j < total; j++) if (!chunks[j]) throw new Error("The encoder skipped a frame.");
       if (chunks[0].type !== "key") throw new Error("The encoder didn’t start on a keyframe.");
+      let passBytes = 0;
+      for (let j = 0; j < total; j++) passBytes += chunks[j].data.byteLength;
+      if (passBytes * loops > MAX_BYTES) {
+        const fits = Math.max(1, Math.floor(MAX_BYTES / passBytes));
+        throw new Error("That would be too large to make on this device. Try " + fits + (fits === 1 ? " loop." : " loops or fewer."));
+      }
 
       // Mux: repeat the encoded pass for each loop.
       setProgress(0.92, "Assembling " + plural(loops, "loop", "loops"));
@@ -785,19 +804,6 @@ body.has-selection .selbar{ display:flex; }
   async function saveVideo(){
     if (!result) return;
     saveNote("");
-    if (downloads) {
-      try {
-        await downloads.save({ filename: result.filename, data: result.blob });
-        $("saveBtn").textContent = "Saved";
-        return;
-      } catch (e) {
-        const code = e && e.code;
-        if (code === "declined") return;
-        if (code === "rate_limited") { saveNote("A save prompt is already open. Finish that one, then try again."); return; }
-        if (code === "too_large") { saveNote("This video is too large to save here. Try fewer loops or a smaller frame."); return; }
-        // otherwise fall through to the browser’s own options
-      }
-    }
     try {
       const file = new File([result.blob], result.filename, { type: "video/mp4" });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -818,6 +824,9 @@ body.has-selection .selbar{ display:flex; }
     $("overlay").classList.remove("open");
     const v = $("resultVideo");
     v.pause();
+    v.removeAttribute("src");
+    v.load();
+    if (result) { URL.revokeObjectURL(result.url); result = null; }
     $("makeBtn").focus();
   }
 
