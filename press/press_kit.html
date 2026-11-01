@@ -312,7 +312,7 @@ section{scroll-margin-top:20px}
         <a class="btn" href="assets/antirot_press_kit.zip" download>Download press kit</a>
         <span class="small">ZIP<span class="js-size" data-file="assets/antirot_press_kit.zip"></span></span>
       </div>
-      <a class="btn btn-ghost js-join" href="#contact">Join the beta</a>
+            <a class="btn btn-ghost" href="https://apps.apple.com/us/app/antirot-archive-app-blocker/id6788718040" target="_blank" rel="noopener">Download now on the App Store</a>
     </div>
   </div>
 
@@ -337,9 +337,9 @@ section{scroll-margin-top:20px}
     <dt>Tagline</dt><dd>Use social media with intention, and save what&rsquo;s worth keeping.</dd>
     <dt>Platform</dt><dd>iPhone, iOS 18 or later</dd>
     <dt>Works with</dt><dd>Instagram, TikTok, Pinterest, YouTube and Facebook</dd>
-    <dt>Price</dt><dd>Free during the beta. At launch, a free trial, then $3.99 a month, or $49.99 once for Antirot Lifetime.</dd>
-    <dt>Availability</dt><dd>In beta on TestFlight, ahead of its App Store release</dd>
-    <dt>Beta</dt><dd><a class="js-join" href="#contact">Join the beta</a></dd>
+    <dt>Price</dt><dd>Free trial, then $3.99 a month, or $49.99 once for Antirot Lifetime.</dd>
+    <dt>Availability</dt><dd>Available now on the App Store</dd>
+    <dt>App Store</dt><dd><a href="https://apps.apple.com/us/app/antirot-archive-app-blocker/id6788718040" target="_blank" rel="noopener">Download now on the App Store</a></dd>
     <dt>Developer</dt><dd>Darby Tarlow, independent developer and roller skating creator</dd>
     <dt>Website</dt><dd><a href="https://antirotmanifesto.com">antirotmanifesto.com</a></dd>
     <dt>Press contact</dt><dd><a href="mailto:Antirotapp@gmail.com">Antirotapp@gmail.com</a></dd>
@@ -475,7 +475,7 @@ section{scroll-margin-top:20px}
     <li class="price"><span class="name">Monthly</span><span class="amount">$3.99 a month</span><p class="body">Everything in Antirot, billed monthly</p></li>
     <li class="price"><span class="name">Antirot Lifetime</span><span class="amount">$49.99 once</span><p class="body">Everything in Antirot, paid once and yours to keep</p></li>
   </ul>
-  <p class="small">Pricing at launch, in US dollars. Local pricing varies by region. Everything is free during the beta.</p>
+  <p class="small">Prices are in US dollars. Local pricing varies by region.</p>
 </section>
 
 <!-- 8. Screenshots and downloads -->
@@ -613,7 +613,7 @@ section{scroll-margin-top:20px}
   <div class="card contact">
     <p class="eyebrow">Review access and contact</p>
     <h2 id="contact-title" class="h2">Writing about Antirot?</h2>
-    <p class="body" style="font-size:17px;max-width:680px">Antirot is in beta on TestFlight. If you&rsquo;re writing about it, email me and I&rsquo;ll send you an invite, plus complimentary full access once it launches. I&rsquo;m happy to do interviews by email, phone or video, and to talk about building an app alone, Apple&rsquo;s Screen Time tools, or what skating content taught me about social media.</p>
+    <p class="body" style="font-size:17px;max-width:680px">Antirot is out now on the App Store. If you&rsquo;re writing about it, email me and I&rsquo;ll set you up with complimentary full access. I&rsquo;m happy to do interviews by email, phone or video, and to talk about building an app alone, Apple&rsquo;s Screen Time tools, or what skating content taught me about social media.</p>
     <a class="btn" href="mailto:Antirotapp@gmail.com?subject=Antirot%20press">Email Darby</a>
     <p class="small">I usually reply within one or two days. Darby, Indochina Time.</p>
   </div>
@@ -641,20 +641,13 @@ section{scroll-margin-top:20px}
 
 <footer class="wrap footer">
     <p>Screenshots, icon, wordmark and photos on this page may be used freely in coverage of Antirot. Please credit photos as noted.</p>
-  <p>Last updated: 10.15.26</p>
+   <p>Last updated: 11.01.26</p>
   <p><a href="/">antirotmanifesto.com</a> · <a href="/privacy.html">Privacy policy</a> · <a href="mailto:Antirotapp@gmail.com">Antirotapp@gmail.com</a></p>
 </footer>
 
 <script>
 (function () {
-  // Beta link for every "Join the beta" button. Swap in a TestFlight public link later if you open one.
-  var JOIN_URL = "mailto:antirotapp@gmail.com"
-    + "?subject=" + encodeURIComponent("Antirot beta invite (press)")
-    + "&body=" + encodeURIComponent("Hi Darby,\n\nI'm writing about Antirot and would love to try the beta. Please send the TestFlight invite to this address, or to the Apple ID email below if it's different.\n\n");
-  document.querySelectorAll('.js-join').forEach(function (a) {
-    a.href = JOIN_URL;
-    if (/^https?:/.test(JOIN_URL)) { a.target = "_blank"; a.rel = "noopener"; }
-  });
+
 
   // Placeholder frames for images that haven't been uploaded yet.
   function markMissing(img) { if (img.parentElement) img.parentElement.classList.add('missing'); }
