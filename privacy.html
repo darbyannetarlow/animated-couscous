@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy · Antirot</title>
-<meta name="description" content="How Antirot handles your data. Your sessions, notes, and saves stay on your iPhone, with no account and no server storing your content.">
+<meta name="description" content="How Antirot handles your data. Your sessions, notes, and saves stay on your iPhone, with no account. Shared collections are encrypted before upload.">
 <meta name="theme-color" content="#f5f8ee">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
@@ -120,22 +120,52 @@ h1{margin:0;font-weight:400;font-family:var(--serif);color:var(--ink)}
 <main class="wrap policy">
   <article class="sheet" aria-labelledby="policy-title">
     <h1 id="policy-title">Antirot Privacy Policy</h1>
-    <p class="stamp">Effective September 25, 2026</p>
+    <p class="stamp">Effective EFFECTIVE_DATE_HERE</p>
 
-    <p class="lede">Antirot helps you manage time in selected apps and save things you want to revisit. Your sessions, intentions, notes, saved links, and saved media are stored on your device. Antirot does not require an account, and we do not operate a server that stores this content.</p>
+    <p class="lede">Antirot helps you manage time in selected apps and save things you want to revisit. Your sessions, intentions, notes, saved links, and saved media are stored on your device. Antirot does not require an account. The only time your content is sent to our servers is when you choose to share a collection, as described below.</p>
 
     <hr>
 
     <div class="body">
+      <p><strong>Who we are.</strong> Antirot is made by House of Murmur, LLC (&ldquo;we,&rdquo; &ldquo;us&rdquo;). You can reach us at <a href="mailto:Antirotapp@gmail.com">Antirotapp@gmail.com</a>.</p>
+
       <p><strong>Screen Time access.</strong> If you grant permission, Antirot uses Apple&rsquo;s Screen Time features to apply app limits and support your sessions. This activity is processed on your device; we do not receive a record of your app usage.</p>
+
+      <p><strong>Sharing a collection.</strong> Sharing is optional and happens only when you tap Create link or Update link.</p>
+
+      <p><em>What is uploaded.</em> The collection&rsquo;s name and description; for each save, its link, title, author, source app, tags, and date; image thumbnails; saved videos and screen recordings (made smaller, and including their audio); your notes on saves if &ldquo;Include my notes&rdquo; is on; and your name and profile picture if you add them under &ldquo;Include who it&rsquo;s from.&rdquo;</p>
+
+      <p><em>Encryption.</em> Your device encrypts all of this before uploading it, using a key that is created on your device and stored only in the link itself, after the &ldquo;#&rdquo;. Browsers and apps don&rsquo;t send that part of a link to servers, so we never receive the key and cannot read your shared collection.</p>
+
+      <p><em>Link preview.</em> So that a preview card appears when you send the link in Messages and other apps, we also store, without encryption, the collection&rsquo;s name, its number of saves, and a cover image that shows the name and up to four images from the collection. Anyone who has the link, and the messaging apps that build link previews, can see this card.</p>
+
+      <p><em>Who can see it.</em> Anyone who has the full link can view the collection in a web browser and import a copy into their own Antirot app until the link expires or you stop sharing. People you send the link to can forward it.</p>
+
+      <p><em>How long it&rsquo;s kept.</em> You choose 7, 30, or 90 days. When a link expires, it stops working, and its content is deleted from our storage, usually within a day. Tapping Stop sharing, or deleting the collection in Antirot, deletes the shared content right away, or as soon as your device is back online. Updating a link replaces the previous version. We keep a small record with no collection content (the link&rsquo;s ID, a one-way fingerprint of its ownership code, file sizes, and dates) until the original expiry date so that a stopped link can&rsquo;t be reactivated.</p>
+
+      <p><em>If you delete Antirot.</em> The code that lets you stop sharing is stored only on your device. If you delete the app or lose your device, your links keep working until they expire. Email us the link and we will delete it.</p>
+
+      <p><em>Copies.</em> We can&rsquo;t remove copies that people have already viewed, saved, or imported.</p>
+
+      <p><em>Your name and picture.</em> If you add them, they are stored on your device and reused for future shares. You can change or remove them at any time in the share screen. They are sent only inside the encrypted collection.</p>
+
+      <p><strong>Viewing or importing a shared collection.</strong> If someone sends you a link, the page decrypts the collection in your browser. The page does not use cookies, analytics, or advertising, and asks search engines not to index it. If you play a YouTube video in a shared collection, it loads in YouTube&rsquo;s privacy-enhanced player, and Google&rsquo;s privacy policy applies. Opening a saved link takes you to that site, which has its own privacy practices. If you import a collection, Antirot downloads and decrypts it on your device and saves an independent copy there.</p>
+
+      <p><strong>Security and abuse prevention.</strong> When you create or update a link, your device sends a one-time Apple DeviceCheck token so we can confirm with Apple that the request comes from the genuine Antirot app on a real Apple device. We do not store this token, and it does not identify you. Our server also uses your IP address for a short time to limit how many requests a single connection can make. We do not store IP addresses or keep server request logs.</p>
+
+      <p><strong>Service providers.</strong> Cloudflare, Inc. runs our sharing server and stores shared collections. Like any network provider, Cloudflare processes IP addresses and technical request information to deliver and protect the service. Apple provides DeviceCheck and handles purchases. These providers may process data in the United States and other countries.</p>
 
       <p><strong>Links and purchases.</strong> When you open a saved link, your device connects to the destination site, which has its own privacy practices. Purchases are handled by Apple. We do not receive your payment card details.</p>
 
-      <p><strong>Support.</strong> If you contact us, we receive the information you choose to send, such as your email address and message. We use it to respond to your request and retain it only as needed for support.</p>
+      <p><strong>Support and reports.</strong> If you contact us or report a shared link, we receive what you send, such as your email address, your message, and the link or link ID. We use it to respond, to review reports, and to remove links that break our Terms of Use, and we keep it only as long as needed for that.</p>
 
-      <p><strong>Storage and deletion.</strong> You can delete content you have saved in Antirot. Deleting the app removes its local data from your device. Copies you exported and device backups managed through Apple may remain separately under your control.</p>
+      <p><strong>Storage and deletion.</strong> You can delete content you have saved in Antirot, and you can stop sharing a collection at any time. Deleting the app removes its local data from your device; see &ldquo;If you delete Antirot&rdquo; above for shared links. Copies you exported, collections others imported, and device backups managed through Apple may remain separately.</p>
 
-      <p>We do not sell your personal information or use your Antirot content for advertising. If our practices change, we will update this policy and its effective date.</p>
+      <p><strong>Your rights.</strong> Depending on where you live (for example, the EEA, the UK, or California), you may have the right to access, correct, or delete personal information, or to object to how it is used. Because Antirot has no accounts and we can&rsquo;t read encrypted shared content, the quickest way to delete a shared collection is Stop sharing in the app. For anything else, email us. To delete a specific share, include its link. You may also complain to your local data protection authority. If you are in the EEA or UK, we process shared collections to provide the sharing feature you ask for, and we process IP addresses, DeviceCheck tokens, and reports based on our legitimate interest in keeping the service secure and free of abuse.</p>
+
+      <p><strong>Children.</strong> Antirot is not directed to children under 13, and children under 13 should not use collection sharing. If you believe a child has shared personal information through Antirot, contact us and we will delete it.</p>
+
+      <p>We do not sell or share your personal information, and we do not use your Antirot content for advertising or analytics. If our practices change, we will update this policy and its effective date.</p>
 
       <p class="contact">For privacy questions or support, contact <a href="mailto:Antirotapp@gmail.com">Antirotapp@gmail.com</a>.</p>
     </div>
